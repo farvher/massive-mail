@@ -2,6 +2,7 @@ package com.massivemail.massivemailing.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,16 +16,22 @@ public class Email {
 	@GeneratedValue
 	Long id;
 
+	@Column(name = "mail_de")
 	String from;
 
+	@Column(name = "mail_para")
 	String to;
-	
+
+	@Column(name = "mail_asunto")
 	String subject;
 
+	@Column(name = "mail_contenido",length=32000)
 	String content;
 
+	@Column(name = "mail_fecha")
 	Date date;
 
+	@Column(name = "mail_enviado")
 	Boolean sent;
 
 	public Long getId() {
@@ -82,7 +89,5 @@ public class Email {
 	public void setSent(Boolean sent) {
 		this.sent = sent;
 	}
-	
-	
 
 }

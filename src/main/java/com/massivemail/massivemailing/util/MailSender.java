@@ -27,9 +27,9 @@ public class MailSender {
         props.put("mail.store.protocol", "pop3");
         props.put("mail.transport.protocol", "smtp");
         final String username = email.getFrom();//
-        final String password = "";
+        final String password = "THEMEANINGOFPAIN";
         try {
-            Session session = Session.getDefaultInstance(props,
+            Session session = Session.getInstance(props,
                     new Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
                             return new PasswordAuthentication(username, password);
@@ -48,7 +48,7 @@ public class MailSender {
             msg.setSentDate(new Date());
             Transport.send(msg);
             System.out.println("Mensaje enviado");
-        } catch (MessagingException e) {
+        } catch (Exception e) {
             System.out.println("Error enviando: " + e);
         }
     }

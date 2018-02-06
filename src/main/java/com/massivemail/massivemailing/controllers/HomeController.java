@@ -20,7 +20,7 @@ public class HomeController {
 
 	private final static String VIEW_HOME = "home";
 
-	private static final String FROM = "";
+	private static final String FROM = "ghostwalking135@gmail.com";
 
 	@Autowired
 	EmailServices emailServices;
@@ -50,8 +50,11 @@ public class HomeController {
 			emailServices.sendMail(email);
 
 		}
+		redirectAttributes.addAttribute("emails", emails);
+		redirectAttributes.addAttribute("subject", subject);
+		redirectAttributes.addAttribute("success", "Mensajes enviados a :" + emails);
 
-		return VIEW_HOME;
+		return "redirect:/";
 	}
 
 }
