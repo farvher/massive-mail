@@ -20,7 +20,7 @@ public class HomeController {
 
 	private final static String VIEW_HOME = "home";
 
-	private static final String FROM = "ghostwalking135@gmail.com";
+	private static final String FROM = "webbuilderssolutions@outlook.es";
 
 	@Autowired
 	EmailServices emailServices;
@@ -32,7 +32,7 @@ public class HomeController {
 	}
 
 	@PostMapping("/")
-	public String sendMailHtml(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes,
+	public String sendMailHtml(@RequestParam("file") MultipartFile file,
 			String emails, String subject, Model m) {
 
 		for (String to : emails.split(",|\r\n")) {
@@ -50,11 +50,11 @@ public class HomeController {
 			emailServices.sendMail(email);
 
 		}
-		redirectAttributes.addAttribute("emails", emails);
-		redirectAttributes.addAttribute("subject", subject);
-		redirectAttributes.addAttribute("success", "Mensajes enviados a :" + emails);
+		m.addAttribute("emails", emails);
+		m.addAttribute("subject", subject);
+		m.addAttribute("success", "Mensajes enviados a  " + emails);
 
-		return "redirect:/";
+		return VIEW_HOME;
 	}
 
 }
