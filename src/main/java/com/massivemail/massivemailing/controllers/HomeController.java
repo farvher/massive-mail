@@ -20,7 +20,7 @@ public class HomeController {
 
 	private final static String VIEW_HOME = "home";
 
-	private static final String FROM = "webbuilderssolutions@outlook.es";
+	private static final String FROM = "webbuilderssolutions@hotmail.com";
 
 	@Autowired
 	EmailServices emailServices;

@@ -17,12 +17,12 @@ public class MailSender {
         final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
         // Get a Properties object
         Properties props = System.getProperties();
-        props.put("mail.smtp.host", "smtp-mail.outlook.com");
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.starttls.enable","true");
-        props.put("mail.smtp.auth", "true"); 
+        props.setProperty("mail.transport.protocol", "smtp");
+        props.setProperty("mail.host", "smtp.live.com");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.auth", "true");
         final String username = email.getFrom();//
-        final String password = "isaac29072017";
+        final String password = "isaac4684129";
         try {
             Session session = Session.getInstance(props,
                     new Authenticator() {
