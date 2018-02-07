@@ -9,42 +9,36 @@ import com.massivemail.massivemailing.entity.Email;
 import javax.activation.*;
 
 public class MailSender {
-	
-	private static final String USER = System.getProperty("user.name");
-	private static final String HOME = System.getProperty("user.home");
 
-    public static void enviarMensaje(Email email) {
-        final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
-        // Get a Properties object
-        Properties props = System.getProperties();
-        props.setProperty("mail.transport.protocol", "smtp");
-        props.setProperty("mail.host", "smtp.live.com");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.auth", "true");
-        final String username = email.getFrom();//
-        final String password = "isaac4684129";
-        try {
-            Session session = Session.getInstance(props,
-                    new Authenticator() {
-                        protected PasswordAuthentication getPasswordAuthentication() {
-                            return new PasswordAuthentication(username, password);
-                        }
-                    });
+	private static final String USER = "ghostwalking135@gmail.com";
+	private static final String PASS = "THEMEANINGOFPAIN";
 
-            // -- Create a new message --
-            Message msg = new MimeMessage(session);
+	public static void enviarMensaje(Email email) {
 
-            // -- Set the FROM and TO fields --
-            msg.setFrom(new InternetAddress(email.getFrom()));
-            msg.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(email.getTo(), false));
-            msg.setSubject(email.getSubject());
-            msg.setContent(email.getContent(), "text/html; charset=utf-8");
-            msg.setSentDate(new Date());
-            Transport.send(msg);
-            System.out.println("Mensaje enviado");
-        } catch (Exception e) {
-            System.out.println("Error enviando: " + e);
-        }
-    }
+		Properties props = System.getProperties();
+		SmtpProperties.getSmtpGmail(props);
+		final String username = USER;
+		final String password = PASS;
+		try {
+			Session session = Session.getInstance(props, new Authenticator() {
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(username, password);
+				}
+			});
+
+			// -- Create a new message --
+			Message msg = new MimeMessage(session);
+
+			// -- Set the FROM and TO fields --
+			msg.setFrom(new InternetAddress(email.getFrom()));
+			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email.getTo(), false));
+			msg.setSubject(email.getSubject());
+			msg.setContent(email.getContent(), "text/html; charset=utf-8");
+			msg.setSentDate(new Date());
+			Transport.send(msg);
+			System.out.println("Mensaje enviado");
+		} catch (Exception e) {
+			System.out.println("Error enviando: " + e);
+		}
+	}
 }
