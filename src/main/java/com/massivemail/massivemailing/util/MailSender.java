@@ -10,8 +10,8 @@ import javax.activation.*;
 
 public class MailSender {
 
-	private static final String USER = "ghostwalking135@gmail.com";
-	private static final String PASS = "THEMEANINGOFPAIN";
+	private static final String USER = "webbuilderssolutions18@gmail.com";
+	private static final String PASS = "isaac4684129";
 
 	public static void enviarMensaje(Email email) {
 
