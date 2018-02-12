@@ -46,7 +46,7 @@ public class HomeController {
 			email.setSubject(subject);
 			email.setTo(to);
 
-			emailServices.saveMail(email);
+		//	emailServices.saveMail(email);
 			emailServices.sendMail(email);
 
 		}
