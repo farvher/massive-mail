@@ -32,12 +32,12 @@ public class HomeController {
 	}
 
 	@PostMapping("/")
-	public String sendMailHtml(@RequestParam("file") MultipartFile file,
-			String emails, String subject, Model m) {
+	public String sendMailHtml(@RequestParam("file") MultipartFile file, String emails, String subject, Model m) {
+
+		String content = FileUtil.readFileAsString(file);
+		content = "".equals(content) ? emailServices.defaulEmail() : content;
 
 		for (String to : emails.split(",|\r\n")) {
-
-			String content = FileUtil.readFileAsString(file);
 			Email email = new Email();
 			email.setContent(content);
 			email.setDate(new Date());
@@ -46,7 +46,7 @@ public class HomeController {
 			email.setSubject(subject);
 			email.setTo(to);
 
-		//	emailServices.saveMail(email);
+			emailServices.saveMail(email);
 			emailServices.sendMail(email);
 
 		}

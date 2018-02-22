@@ -9,5 +9,8 @@ public interface EmailServices {
 	void saveMail(Email email);
 
 	void sendMail(Email email);
+        
+	String defaulEmail();
+	
 
 }
