@@ -2,7 +2,7 @@ package com.massivemail.massivemailing.util;
 
 import java.util.Properties;
 
-public class SmtpProperties {
+public class GenProperties {
 
 	public static void getSmtpGmail(Properties props) {
 		final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";

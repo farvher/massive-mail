@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.massivemail.massivemailing.entity.Email;
 import com.massivemail.massivemailing.repository.EmailRepository;
-import com.massivemail.massivemailing.util.MailSender;
+import com.massivemail.massivemailing.util.Util;
 
 @Service
 public class EmailServicesImpl implements EmailServices {
@@ -25,7 +25,7 @@ public class EmailServicesImpl implements EmailServices {
 
     @Override
     public void sendMail(Email email) {
-        MailSender.enviarMensaje(email);
+        Util.enviarMensaje(email);
     }
 
 	@Override
